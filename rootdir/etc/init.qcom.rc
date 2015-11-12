@@ -374,8 +374,8 @@ service adsprpcd /system/vendor/bin/adsprpcd
     user media
     group media
 
-service wcnss-service /system/vendor/bin/wcnss_service
-    class main
+service wcnss-service /vendor/bin/wcnss_service
+    class late_start
     user system
     group system wifi oem_2950 radio
     oneshot
