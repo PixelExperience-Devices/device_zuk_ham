@@ -58,13 +58,10 @@ char scaling_gov_path[4][80] ={
 
 #define PERF_HAL_PATH "libqti-perfd-client.so"
 static void *qcopt_handle;
-static void *iop_handle;
 static int (*perf_lock_acq)(unsigned long handle, int duration,
     int list[], int numArgs);
 static int (*perf_lock_rel)(unsigned long handle);
 static int (*perf_lock_use_profile)(unsigned long handle, int profile);
-static int (*perf_io_prefetch_start)(int, const char*);
-static int (*perf_io_prefetch_stop)();
 static struct list_node active_hint_list_head;
 static int profile_handle = 0;
 
@@ -95,21 +92,6 @@ static void *get_qcopt_handle()
     return handle;
 }
 
-static void *get_iop_handle()
-{
-    char iop_lib_path[PATH_MAX] = {0};
-    void *handle = NULL;
-
-    dlerror();
-
-    handle = dlopen("libqti-iop-client.so", RTLD_NOW | RTLD_LOCAL);
-    if (!handle) {
-        ALOGE("Unable to open prefetcher: %s\n", dlerror());
-    }
-
-    return handle;
-}
-
 static void __attribute__ ((constructor)) initialize(void)
 {
     qcopt_handle = get_qcopt_handle();
@@ -135,23 +117,6 @@ static void __attribute__ ((constructor)) initialize(void)
         perf_lock_use_profile = dlsym(qcopt_handle, "perf_lock_use_profile");
     }
 
-    iop_handle = get_iop_handle();
-
-    if (!iop_handle) {
-        ALOGE("Failed to get prefetcher handle.\n");
-    } else {
-        perf_io_prefetch_start = (int(*)(int, const char *))dlsym(
-                iop_handle, "perf_io_prefetch_start");
-        if (!perf_io_prefetch_start) {
-            goto fail_iop;
-        }
-
-        perf_io_prefetch_stop = (int(*)())dlsym(
-                iop_handle, "perf_io_prefetch_stop");
-        if (!perf_io_prefetch_stop) {
-            goto fail_iop;
-        }
-    }
     return;
 
 fail_qcopt:
@@ -161,14 +126,6 @@ fail_qcopt:
         dlclose(qcopt_handle);
         qcopt_handle = NULL;
     }
-
-fail_iop:
-    perf_io_prefetch_start = NULL;
-    perf_io_prefetch_stop = NULL;
-    if (iop_handle) {
-        dlclose(iop_handle);
-        iop_handle = NULL;
-    }
 }
 
 static void __attribute__ ((destructor)) cleanup(void)
@@ -176,10 +133,6 @@ static void __attribute__ ((destructor)) cleanup(void)
     if (qcopt_handle) {
         if (dlclose(qcopt_handle))
             ALOGE("Error occurred while closing qc-opt library.");
-    }
-    if (iop_handle) {
-        if (dlclose(iop_handle))
-            ALOGE("Error occurred while closing prefetcher library.");
     }
 }
 
@@ -392,14 +345,6 @@ void set_profile(int profile)
                 ALOGE("Failed to set profile.");
             if (profile < 0)
                 profile_handle = 0;
-        }
-    }
-}
-
-void start_prefetch(int pid, const char* packageName) {
-    if (iop_handle) {
-        if (perf_io_prefetch_start) {
-            perf_io_prefetch_start(pid, packageName);
         }
     }
 }

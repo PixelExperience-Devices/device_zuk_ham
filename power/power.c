@@ -57,6 +57,8 @@ static int saved_mpdecision_slack_max = -1;
 static int saved_mpdecision_slack_min = -1;
 static int slack_node_rw_failed = 0;
 static int display_hint_sent;
+static int input_boost_ms = 0;
+static int off_input_boost_ms = 0;
 
 static pthread_mutex_t hint_mutex = PTHREAD_MUTEX_INITIALIZER;
 
@@ -236,6 +238,7 @@ void set_interactive(struct power_module *module, int on)
     char tmp_str[NODE_MAX];
     struct video_encode_metadata_t video_encode_metadata;
     int rc = 0;
+    int tmp;
 
     pthread_mutex_lock(&hint_mutex);
 
@@ -371,6 +374,20 @@ void set_interactive(struct power_module *module, int on)
 
             slack_node_rw_failed = rc;
         }
+
+        if (!sysfs_read(INPUT_BOOST_MS_PATH, tmp_str, NODE_MAX - 1)) {
+            tmp = atoi(tmp_str);
+            if (!input_boost_ms || (input_boost_ms != tmp && off_input_boost_ms != tmp)) {
+                input_boost_ms = tmp;
+            }
+
+            snprintf(tmp_str, NODE_MAX, "%d", off_input_boost_ms);
+            sysfs_write(INPUT_BOOST_MS_PATH, tmp_str);
+        } else {
+            ALOGE("Failed to read %s", INPUT_BOOST_MS_PATH);
+
+            rc = 1;
+        }
     } else {
         /* Display on. */
         if ((strncmp(governor, ONDEMAND_GOVERNOR, strlen(ONDEMAND_GOVERNOR)) == 0) &&
@@ -431,6 +448,20 @@ void set_interactive(struct power_module *module, int on)
             }
 
             slack_node_rw_failed = rc;
+        }
+
+        if (!sysfs_read(INPUT_BOOST_MS_PATH, tmp_str, NODE_MAX - 1)) {
+            tmp = atoi(tmp_str);
+            if (!input_boost_ms || (input_boost_ms != tmp && off_input_boost_ms != tmp)) {
+                input_boost_ms = tmp;
+            }
+
+            snprintf(tmp_str, NODE_MAX, "%d", input_boost_ms);
+            sysfs_write(INPUT_BOOST_MS_PATH, tmp_str);
+        } else {
+            ALOGE("Failed to read %s", INPUT_BOOST_MS_PATH);
+
+            rc = 1;
         }
     }
 
