@@ -55,3 +55,6 @@
 
 #net
 /sys/devices/virtual/net(/.*)?                          u:object_r:sysfs_net:s0
+
+# Thermanager
+/(vendor|system/vendor)/bin/thermanager		u:object_r:thermanager_exec:s0

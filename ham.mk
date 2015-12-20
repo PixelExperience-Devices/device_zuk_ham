@@ -207,9 +207,13 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     keystore.msm8974
 
+# Thermanager
+PRODUCT_PACKAGES += \
+    thermanager
+
 # Thermal
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/thermal-engine.conf:system/vendor/etc/thermal-engine-8974.conf
+    $(LOCAL_PATH)/configs/thermanager.xml:system/vendor/etc/thermanager.xml
 
 # USB
 PRODUCT_PACKAGES += \
