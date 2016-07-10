@@ -113,6 +113,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     ConfigPanel
 
+# DeviceSettings
+PRODUCT_PACKAGES += \
+    DeviceSettings
+
 # Graphics
 PRODUCT_PACKAGES += \
     copybit.msm8974 \
