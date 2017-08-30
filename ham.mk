@@ -82,6 +82,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
      audio.offload.pcm.16bit.enable=true \
      audio.offload.pcm.24bit.enable=true \
      persist.vendor.audio.fluence.voicecall=true \
+     ro.audio.flinger_standbytime_ms=300 \
      ro.vendor.audio.sdk.fluencetype=fluence \
      vendor.audio_hal.period_size=192 \
      vendor.audio.offload.buffer.size.kb=32 \
