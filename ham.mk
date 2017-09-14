@@ -161,6 +161,10 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/gps/sap.conf:system/etc/sap.conf
 #    $(LOCAL_PATH)/gps/flp.conf:system/etc/flp.conf \
 
+# Health
+PRODUCT_PACKAGES += \
+    android.hardware.health@1.0-impl
+
 # Lights
 PRODUCT_PACKAGES += \
     android.hardware.light@2.0-service.ham
