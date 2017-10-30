@@ -25,12 +25,12 @@ on init
     mkdir /oem 0550 root root
 
 on early-boot
-    # set RLIMIT_MEMLOCK to 64MB
+    # Set RLIMIT_MEMLOCK to 64MB
     setrlimit 8 67108864 67108864
     write /sys/kernel/boot_adsp/boot 1
 
 on boot
-    # bluetooth
+    # Bluetooth
     chown bluetooth bluetooth /sys/module/bluetooth_power/parameters/power
     chown bluetooth bluetooth /sys/class/rfkill/rfkill0/type
     chown bluetooth bluetooth /sys/class/rfkill/rfkill0/state
@@ -53,7 +53,7 @@ on boot
     chmod 0660 /dev/ttyHS2
     chown bluetooth bluetooth /dev/ttyHS2
 
-    #Create QMUX deamon socket area
+    # Create QMUX deamon socket area
     mkdir /dev/socket/qmux_radio 0770 radio radio
     chmod 2770 /dev/socket/qmux_radio
     mkdir /dev/socket/netmgr 0770 radio radio
@@ -65,11 +65,11 @@ on boot
     mkdir /dev/socket/qmux_gps 0770 gps gps
     chmod 2770 /dev/socket/qmux_gps
 
-    # For setting tcp delayed ack
+    # Setting tcp delayed ack
     chown system system /sys/kernel/ipv4/tcp_delack_seg
     chown system system /sys/kernel/ipv4/tcp_use_userconfig
 
-# Define TCP delayed ack settings for WiFi & LTE
+    # Define TCP delayed ack settings for WiFi & LTE
     setprop net.tcp.delack.default     1
     setprop net.tcp.delack.wifi        20
     setprop net.tcp.delack.lte         8
@@ -77,12 +77,12 @@ on boot
     setprop net.tcp.usercfg.wifi       1
     setprop net.tcp.usercfg.lte        1
 
-#   Assign TCP buffer thresholds to be ceiling value of technology maximums
-#   Increased technology maximums should be reflected here.
+    # Assign TCP buffer thresholds to be ceiling value of technology maximums
+    # Increased technology maximums should be reflected here.
     write /proc/sys/net/core/rmem_max  8388608
     write /proc/sys/net/core/wmem_max  8388608
 
-    #To allow interfaces to get v6 address when tethering is enabled
+    # To allow interfaces to get v6 address when tethering is enabled
     write /proc/sys/net/ipv6/conf/rmnet0/accept_ra 2
     write /proc/sys/net/ipv6/conf/rmnet1/accept_ra 2
     write /proc/sys/net/ipv6/conf/rmnet2/accept_ra 2
@@ -111,10 +111,6 @@ on boot
     # connections on high-throughput links get dropped when
     # an ack packet comes out of order
     write /proc/sys/net/netfilter/nf_conntrack_tcp_be_liberal 1
-
-    # NFC local data and nfcee xml storage
-    mkdir /data/nfc 0770 nfc nfc
-    mkdir /data/nfc/param 0770 nfc nfc
 
     # Set the console loglevel to < KERN_INFO
     # Set the default message loglevel to KERN_INFO
@@ -177,7 +173,7 @@ on post-fs-data
     # Create directory for TZ Apps
     mkdir /data/misc/qsee 0770 system system
 
-    # bluetooth
+    # Bluetooth
     mkdir /data/misc/bluetooth 0770 bluetooth bluetooth
 
     # Create directory used by audio subsystem
@@ -223,7 +219,7 @@ on post-fs-data
     chown system system /persist
     chmod 0771 /persist
 
-    #Create directories for Location services
+    # Create directories for Location services
     mkdir /data/misc/location 0770 gps gps
     mkdir /data/misc/location/mq 0770 gps gps
     mkdir /data/misc/location/xtwifi 0770 gps gps
@@ -231,7 +227,7 @@ on post-fs-data
     mkdir /data/misc/location/quipc 0770 gps system/
     mkdir /data/misc/location/gsiff 0770 gps gps
 
-    #Create directory from IMS services
+    # Create directory from IMS services
     mkdir /data/shared 0755
     chown system system /data/shared
 
@@ -246,16 +242,16 @@ on post-fs-data
 
     setprop vold.post_fs_data_done 1
 
-    #Create PERFD deamon related dirs
+    # Create PERFD deamon related dirs
     mkdir /data/misc/perfd 0755 root system
     chmod 2755 /data/misc/perfd
     mkdir /data/system/perfd 0770 root system
     chmod 2770 /data/system/perfd
 
-    # camera sockets
+    # Camera sockets
     mkdir /data/misc/camera 0770 camera camera
 
-    # custom ECC
+    # Custom ECC
     mkdir /data/misc/radio 0700 radio radio
     copy /vendor/etc/qcril_cm.db /data/misc/radio/qcril.db
     chown radio radio /data/misc/radio/qcril.db
@@ -286,9 +282,9 @@ service rmt_storage /system/vendor/bin/rmt_storage
     group system wakelock
 
 service rfs_access /system/vendor/bin/rfs_access
-   class core
-   user system
-   group system net_raw
+    class core
+    user system
+    group system net_raw
 
 # QMUX must be in multiple groups to support external process connections
 service qmuxd /system/vendor/bin/qmuxd
@@ -380,27 +376,27 @@ service qcamerasvr /system/vendor/bin/mm-qcamera-daemon
     group camera system inet input graphics
 
 service mpdecision /system/vendor/bin/mpdecision --avg_comp
-   class main
-   user root
-   group system
-   disabled
+    class main
+    user root
+    group system
+    disabled
 
 service thermal-engine /system/vendor/bin/thermal-engine
-   class main
-   user root
-   group root
-   socket thermal-send-client stream 0666 system system
-   socket thermal-recv-client stream 0660 system system
-   socket thermal-recv-passive-client stream 0666 system system
+    class main
+    user root
+    group root
+    socket thermal-send-client stream 0666 system system
+    socket thermal-recv-client stream 0660 system system
+    socket thermal-recv-passive-client stream 0666 system system
 
 service time_daemon /system/vendor/bin/time_daemon
-   class late_start
-   user root
-   group root
+    class late_start
+    user root
+    group root
 
 on property:vold.decrypt=trigger_restart_framework
-   start config_bluetooth
-   start wcnss-service
+    start config_bluetooth
+    start wcnss-service
 
 service config_bt_addr /system/vendor/bin/btnvtool -O
     class core
@@ -433,9 +429,9 @@ service adsprpcd /system/vendor/bin/adsprpcd
     group media
 
 service audiod /system/vendor/bin/audiod
-   class late_start
-   user system
-   group system
+    class late_start
+    user system
+    group system
 
 service wcnss-service /system/vendor/bin/wcnss_service
     class main
@@ -494,20 +490,3 @@ service fuse_sdcard1 /system/bin/sdcard -u 1023 -g 1023 -w 1023 -d /mnt/media_rw
 service fuse_usbdisk /system/bin/sdcard -u 1023 -g 1023 -w 1023 -d /mnt/media_rw/usbdisk /storage/usbdisk
     class late_start
     disabled
-
-service ssr_diag /system/bin/ssr_diag
-    class late_start
-    user system
-    group system
-    disabled
-
-# fingerprint daemon
-service fingerprintd /system/bin/fingerprintd
-    class late_start
-    user system
-
-service testmode /sbin/testmode
-     seclabel u:r:testmode:s0
-     class late_start
-     user root
-     oneshot
