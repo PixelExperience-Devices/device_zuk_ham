@@ -74,4 +74,3 @@ LOCAL_PROPRIETARY_MODULE := true
 
 include $(BUILD_SHARED_LIBRARY)
 
-#include $(LOCAL_PATH)/test/Android.mk
