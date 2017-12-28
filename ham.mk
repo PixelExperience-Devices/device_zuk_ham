@@ -55,7 +55,6 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/audio/mixer_paths.xml:system/vendor/etc/mixer_paths.xml
 
 PRODUCT_PACKAGES += \
-    audiod \
     audio.a2dp.default \
     audio_amplifier.msm8974 \
     audio_policy.msm8974 \
