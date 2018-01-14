@@ -116,7 +116,8 @@ TARGET_USES_ION 			:= true
 OVERRIDE_RS_DRIVER 			:= libRSDriver_adreno.so
 HAVE_ADRENO_SOURCE			:= false
 NUM_FRAMEBUFFER_SURFACE_BUFFERS 	:= 3
-TARGET_NEEDS_PLATFORM_TEXT_RELOCATIONS	:= true
+TARGET_NEEDS_PLATFORM_TEXT_RELOCATIONS  := true
+SF_START_GRAPHICS_ALLOCATOR_SERVICE 	:= true
 
 # Shader cache config options
 # Maximum size of the  GLES Shaders that can be cached for reuse.
