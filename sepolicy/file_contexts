@@ -16,6 +16,10 @@
 # HALS
 /(vendor|system/vendor)/bin/hw/android\.hardware\.camera\.provider@2\.4-service\.ham                    u:object_r:hal_camera_default_exec:s0
 /(vendor|system/vendor)/bin/hw/android\.hardware\.biometrics\.fingerprint@2\.0-service\.ham		u:object_r:hal_fingerprint_default_exec:s0
+/(vendor|system/vendor)/bin/hw/android\.hardware\.light@2\.0-service.ham                                u:object_r:hal_light_default_exec:s0
+
+# Lights
+/sys/devices/mdp.0/qcom,mdss_fb_primary.169/leds/lcd-backlight/max_brightness		u:object_r:sysfs:s0
 
 # Fingerprint
 /persist/fingerprintapp(/.*)?                                      u:object_r:fingerprint_persist_file:s0
