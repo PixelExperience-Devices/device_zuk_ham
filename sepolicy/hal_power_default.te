@@ -1,0 +1,3 @@
+#============= hal_power_default ==============
+allow hal_power_default touchpanel_sysfs:dir search;
+allow hal_power_default touchpanel_sysfs:file { open write };
