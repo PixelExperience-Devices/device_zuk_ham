@@ -1,6 +1,6 @@
 # Camera
 /data/cam_socket.*                                 			       u:object_r:camera_socket:s0
-/vendor/bin/hw/android\.hardware\.camera\.provider@2\.4-service.ham          u:object_r:hal_camera_default_exec:s0
+/(vendor|system/vendor)/bin/hw/android\.hardware\.camera\.provider@2\.4-service.ham          u:object_r:hal_camera_default_exec:s0
 
 # Vibrator
 /sys/devices/virtual/timed_output/vibrator/vtg_level   u:object_r:vibeamp_sysfs:s0
