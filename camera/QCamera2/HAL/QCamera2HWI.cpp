@@ -4546,6 +4546,7 @@ QCameraReprocessChannel *QCamera2HardwareInterface::addOnlineReprocChannel(
 
     ALOGD("%s: Allocating %d reproc buffers",__func__,minStreamBufNum);
 
+    bool offlineReproc = isRegularCapture();
     rc = pChannel->addReprocStreamsFromSource(*this,
                                               pp_config,
                                               pInputChannel,
@@ -6154,6 +6155,29 @@ int32_t QCamera2HardwareInterface::waitDefferedWork(int32_t &job_id)
 
     job_id = MAX_ONGOING_JOBS;
     return NO_ERROR;
+}
+
+/*===========================================================================
+ * FUNCTION   : isRegularCapture
+ *
+ * DESCRIPTION: Check configuration for regular catpure
+ *
+ * PARAMETERS :
+ *
+ * RETURN     : true - regular capture
+ *              false - other type of capture
+ *==========================================================================*/
+bool QCamera2HardwareInterface::isRegularCapture()
+{
+    bool ret = false;
+
+    if (numOfSnapshotsExpected() == 1 &&
+        !isLongshotEnabled() &&
+        !mParameters.getRecordingHintValue() &&
+        !isZSLMode() && !(mParameters.isHDREnabled())) {
+            ret = true;
+    }
+    return ret;
 }
 
 }; // namespace qcamera

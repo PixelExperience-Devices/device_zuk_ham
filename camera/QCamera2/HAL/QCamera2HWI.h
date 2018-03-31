@@ -328,6 +328,7 @@ private:
     int commitParameterChanges();
 
     bool needDebugFps();
+    bool isRegularCapture();
     bool isCACEnabled();
     bool isPreviewRestartEnabled();
     bool isCaptureShutterEnabled();
