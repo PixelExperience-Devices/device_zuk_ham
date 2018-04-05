@@ -290,4 +290,7 @@
    <!-- Should DT2S work on fullscreen or not on lockscreen? -->
    <bool name="fullScreenDT2S">true</bool>
 
+   <bool name="config_button_brightness_support">true</bool>
+   <integer name="config_button_brightness_default">128</integer>
+
 </resources>
