@@ -185,7 +185,7 @@ TARGET_HAS_NO_WIFI_STATS 	:= true
 TARGET_RIL_VARIANT 		:= caf
 
 # Recovery
-TARGET_RECOVERY_FSTAB 		:= $(DEVICE_PATH)/rootdir/etc/fstab.recovery
+TARGET_RECOVERY_FSTAB 		:= $(DEVICE_PATH)/rootdir/etc/fstab.qcom
 
 # Releasetools
 TARGET_RELEASETOOLS_EXTENSIONS	:= $(DEVICE_PATH)
