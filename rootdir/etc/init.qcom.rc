@@ -407,7 +407,7 @@ service config_bt_addr /system/vendor/bin/btnvtool -O
     group bluetooth radio
     oneshot
 
-service config_bluetooth /system/bin/sh /system/etc/init.qcom.bt.sh "onboot"
+service config_bluetooth /system/vendor/bin/sh /system/vendor/bin/init.qcom.bt.sh "onboot"
     class core
     user root
     group bluetooth net_bt_admin oem_2950 radio
