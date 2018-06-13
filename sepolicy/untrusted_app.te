@@ -1,0 +1,4 @@
+#============= untrusted_app ==============
+dontaudit untrusted_app hal_memtrack_default:binder call;
+dontaudit untrusted_app hal_memtrack_hwservice:hwservice_manager find;
+dontaudit untrusted_app proc:file { getattr open read };

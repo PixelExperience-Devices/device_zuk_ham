@@ -1,2 +1,4 @@
+#============= tee ==============
+allow tee vfat:file { getattr open read };
 allow tee fingerprint_persist_file:dir create_dir_perms;
 allow tee fingerprint_persist_file:file create_file_perms;

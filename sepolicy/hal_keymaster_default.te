@@ -1,0 +1,4 @@
+#============= hal_keymaster_default ==============
+allow hal_keymaster_default firmware_file:dir search;
+allow hal_keymaster_default firmware_file:file { getattr open read };
+allow hal_keymaster_default vfat:file { getattr open read };

@@ -1,0 +1,2 @@
+#============= mpdecision ==============
+allow mpdecision sysfs_memory:dir search;

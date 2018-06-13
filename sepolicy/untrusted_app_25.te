@@ -1,0 +1,4 @@
+#============= untrusted_app_25 ==============
+dontaudit untrusted_app_25 apk_data_file:file setattr;
+dontaudit untrusted_app_25 proc:file read;
+dontaudit untrusted_app_25 serialno_prop:file open;

@@ -1,0 +1,2 @@
+#============= mm-pp-daemon ==============
+allow mm-pp-daemon sysfs:file { getattr open read write };
