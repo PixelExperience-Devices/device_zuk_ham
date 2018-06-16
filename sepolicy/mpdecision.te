@@ -1,2 +1,3 @@
 #============= mpdecision ==============
 allow mpdecision sysfs_memory:dir search;
+allow mpdecision sysfs_memory:file { write open read };
