@@ -101,9 +101,9 @@ vendor/lib/libqomx_jpegdec.so
 vendor/lib/libqomx_jpegenc.so
 
 # Camera firmware
-etc/firmware/cpp_firmware_v1_1_1.fw
-etc/firmware/cpp_firmware_v1_1_6.fw
-etc/firmware/cpp_firmware_v1_2_0.fw
+etc/firmware/cpp_firmware_v1_1_1.fw:vendor/firmware/cpp_firmware_v1_1_1.fw
+etc/firmware/cpp_firmware_v1_1_6.fw:vendor/firmware/cpp_firmware_v1_1_6.fw
+etc/firmware/cpp_firmware_v1_2_0.fw:vendor/firmware/cpp_firmware_v1_2_0.fw
 
 # DRM
 bin/qseecomd:vendor/bin/qseecomd
@@ -149,8 +149,8 @@ vendor/lib/libscale.so|b44f44c633fa404d10e76aaa23593b516e08e2b8
 vendor/lib/libuiblur.so
 
 # Graphics firmware
-etc/firmware/a330_pfp.fw
-etc/firmware/a330_pm4.fw
+etc/firmware/a330_pfp.fw:vendor/firmware/a330_pfp.fw
+etc/firmware/a330_pm4.fw:vendor/firmware/a330_pm4.fw
 
 # Media
 vendor/lib/libDivxDrm.so
@@ -205,12 +205,12 @@ bin/qmuxd:vendor/bin/qmuxd
 bin/radish:vendor/bin/radish
 bin/rfs_access:vendor/bin/rfs_access
 bin/rmt_storage:vendor/bin/rmt_storage
-etc/data/dsi_config.xml
-etc/data/netmgr_config.xml
-etc/permissions/qcnvitems.xml
-etc/permissions/qcrilhook.xml
-framework/qcnvitems.jar
-framework/qcrilhook.jar
+etc/data/dsi_config.xml:vendor/etc/data/dsi_config.xml
+etc/data/netmgr_config.xml:vendor/etc/data/netmgr_config.xml
+etc/permissions/qcnvitems.xml:vendor/etc/permissions/qcnvitems.xml
+etc/permissions/qcrilhook.xml:vendor/etc/permissions/qcrilhook.xml
+framework/qcnvitems.jar:vendor/framework/qcnvitems.jar
+framework/qcrilhook.jar:vendor/framework/qcrilhook.jar
 lib/libmdmdetect.so:vendor/lib/libmdmdetect.so
 vendor/lib/libcneapiclient.so
 vendor/lib/libconfigdb.so
@@ -252,13 +252,13 @@ vendor/lib/libTimeService.so
 -app/TimeService/TimeService.apk
 
 # Venus (media) firmware
-etc/firmware/venus.b00
-etc/firmware/venus.b01
-etc/firmware/venus.b02
-etc/firmware/venus.b03
-etc/firmware/venus.b04
-etc/firmware/venus.mbn
-etc/firmware/venus.mdt
+etc/firmware/venus.b00:vendor/firmware/venus.b00
+etc/firmware/venus.b01:vendor/firmware/venus.b01
+etc/firmware/venus.b02:vendor/firmware/venus.b02
+etc/firmware/venus.b03:vendor/firmware/venus.b03
+etc/firmware/venus.b04:vendor/firmware/venus.b04
+etc/firmware/venus.mbn:vendor/firmware/venus.mbn
+etc/firmware/venus.mdt:vendor/firmware/venus.mdt
 
 # Widevine
 vendor/lib/libwvdrm_L3.so|7e77482481197997294a834bfbc817a01b6075cd
