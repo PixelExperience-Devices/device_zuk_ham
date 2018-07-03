@@ -1,5 +1,5 @@
 # ADSP
-bin/adsprpcd
+bin/adsprpcd:vendor/bin/adsprpcd
 vendor/lib/libadsprpc.so
 vendor/lib/libfastcvadsp_stub.so
 vendor/lib/libfastcvopt.so
@@ -18,12 +18,12 @@ vendor/lib/soundfx/libqcreverb.so
 vendor/lib/soundfx/libqcvirt.so
 
 # Bluetooth
-bin/btnvtool
-bin/hci_qcomm_init
+bin/btnvtool:vendor/bin/btnvtool
+bin/hci_qcomm_init:vendor/bin/hci_qcomm_init
 vendor/lib/libbtnv.so
 
 # Camera
-bin/mm-qcamera-daemon
+bin/mm-qcamera-daemon:vendor/bin/mm-qcamera-daemon
 lib/libmmcamera_interface.so
 lib/libmmjpeg_interface.so
 lib/libqomx_core.so
@@ -106,7 +106,7 @@ etc/firmware/cpp_firmware_v1_1_6.fw
 etc/firmware/cpp_firmware_v1_2_0.fw
 
 # DRM
-bin/qseecomd
+bin/qseecomd:vendor/bin/qseecomd
 lib/libdrmdecrypt.so
 vendor/lib/libQSEEComAPI.so
 vendor/lib/libdrmfs.so
@@ -166,7 +166,7 @@ vendor/lib/libmmosal.so
 vendor/lib/libSHIMDivxDrm.so
 
 # Perf
-bin/mpdecision
+bin/mpdecision:vendor/bin/mpdecision
 vendor/lib/libqti-perfd-client.so
 
 # Postprocessing
@@ -176,7 +176,7 @@ vendor/lib/libmm-abl.so
 vendor/lib/libmm-abl-oem.so
 
 # Qualcomm framework
-bin/irsc_util
+bin/irsc_util:vendor/bin/irsc_util
 vendor/lib/libdataitems.so
 vendor/lib/libdiag.so
 vendor/lib/libdsi_netctrl.so
@@ -199,12 +199,12 @@ vendor/lib/libsystem_health_mon.so
 # Radio
 -priv-app/qcrilmsgtunnel/qcrilmsgtunnel.apk
 -app/shutdownlistener/shutdownlistener.apk
-bin/diag_mdlog
-bin/netmgrd
-bin/qmuxd
-bin/radish
-bin/rfs_access
-bin/rmt_storage
+bin/diag_mdlog:vendor/bin/diag_mdlog
+bin/netmgrd:vendor/bin/netmgrd
+bin/qmuxd:vendor/bin/qmuxd
+bin/radish:vendor/bin/radish
+bin/rfs_access:vendor/bin/rfs_access
+bin/rmt_storage:vendor/bin/rmt_storage
 etc/data/dsi_config.xml
 etc/data/netmgr_config.xml
 etc/permissions/qcnvitems.xml
@@ -223,7 +223,7 @@ vendor/lib/libril-qcril-hook-oem.so
 vendor/lib/libxml.so
 
 # Sensors
-bin/sensors.qcom
+bin/sensors.qcom:vendor/bin/sensors.qcom
 etc/sensor_def_qcomdev.conf
 vendor/lib/hw/activity_recognition.msm8974.so
 vendor/lib/hw/sensors.msm8974.so
@@ -247,7 +247,7 @@ vendor/lib/libthermalclient.so
 vendor/lib/libthermalioctl.so
 
 # Time services
-bin/time_daemon
+bin/time_daemon:vendor/bin/time_daemon
 vendor/lib/libtime_genoff.so
 vendor/lib/libTimeService.so
 -app/TimeService/TimeService.apk
