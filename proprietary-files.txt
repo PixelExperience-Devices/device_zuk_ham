@@ -24,9 +24,9 @@ vendor/lib/libbtnv.so
 
 # Camera
 bin/mm-qcamera-daemon:vendor/bin/mm-qcamera-daemon
-lib/libmmcamera_interface.so
-lib/libmmjpeg_interface.so
-lib/libqomx_core.so
+lib/libmmcamera_interface.so:vendor/lib/libmmcamera_interface.so
+lib/libmmjpeg_interface.so:vendor/lib/libmmjpeg_interface.so
+lib/libqomx_core.so:vendor/lib/libqomx_core.so
 vendor/lib/libactuator_rohm_bu63163.so
 vendor/lib/libactuator_rohm_bu63163_camcorder.so
 vendor/lib/libactuator_rohm_bu63163_camera.so
@@ -107,7 +107,7 @@ etc/firmware/cpp_firmware_v1_2_0.fw
 
 # DRM
 bin/qseecomd:vendor/bin/qseecomd
-lib/libdrmdecrypt.so
+lib/libdrmdecrypt.so:vendor/lib/libdrmdecrypt.so
 vendor/lib/libQSEEComAPI.so
 vendor/lib/libdrmfs.so
 vendor/lib/libdrmtime.so
@@ -119,8 +119,8 @@ lib/hw/fingerprint.msm8974.so
 lib/lib_fpc_tac_shared.so
 
 # GPS
-lib/libloc_ds_api.so
-lib/libloc_api_v02.so|76f0f1224b2afc37215fb8732fc4835f72dc3cbb
+lib/libloc_ds_api.so:vendor/lib/libloc_ds_api.so
+lib/libloc_api_v02.so:vendor/lib/libloc_api_v02.so|76f0f1224b2afc37215fb8732fc4835f72dc3cbb
 vendor/lib/hw/flp.default.so
 vendor/lib/libflp.so
 vendor/lib/libgeofence.so
@@ -211,8 +211,7 @@ etc/permissions/qcnvitems.xml
 etc/permissions/qcrilhook.xml
 framework/qcnvitems.jar
 framework/qcrilhook.jar
-framework/ConnectivityExt.jar
-lib/libmdmdetect.so
+lib/libmdmdetect.so:vendor/lib/libmdmdetect.so
 vendor/lib/libcneapiclient.so
 vendor/lib/libconfigdb.so
 vendor/lib/liblqe.so
@@ -267,5 +266,5 @@ vendor/lib/libWVStreamControlAPI_L3.so|61673304827483d44b735a3dd08f0783d10ce92d
 vendor/lib/mediadrm/libwvdrmengine.so|416e44ba482f1f97258ff8793b0a810219ac632d
 
 # WiFi
--lib/libwpa_qmi_eap_proxy.so
-lib/libwcnss_qmi.so
+-lib/libwpa_qmi_eap_proxy.so:vendor/lib/libwpa_qmi_eap_proxy.so
+lib/libwcnss_qmi.so:vendor/lib/libwcnss_qmi.so
