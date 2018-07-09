@@ -49,14 +49,20 @@
             android:name=".ButtonSettingsActivity"
             android:label="@string/button_panel_title">
             <intent-filter>
-                <action android:name="org.lineageos.settings.device.ADDITIONAL_BUTTONS_SETTINGS" />
-                <category android:name="android.intent.category.DEFAULT" />
+                <action android:name="com.android.settings.action.EXTRA_SETTINGS" />
             </intent-filter>
+            <meta-data	
+                android:name="com.android.settings.icon"	
+                android:resource="@drawable/ic_settings_additional_buttons" />	
+            <meta-data	
+                android:name="com.android.settings.category"	
+                android:value="com.android.settings.category.ia.homepage" />
         </activity>
 
         <receiver android:name=".Startup" >
             <intent-filter>
-                <action android:name="lineageos.intent.action.INITIALIZE_LINEAGE_HARDWARE" />
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.PRE_BOOT_COMPLETED" />
             </intent-filter>
         </receiver>
     </application>
