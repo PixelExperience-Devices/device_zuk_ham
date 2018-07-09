@@ -9,12 +9,12 @@
     "remote":      "github",
     "repository":  "sb6596/android_kernel_cyanogen_msm8974",
     "target_path": "kernel/cyanogen/msm8974",
-    "branch":      "lineage-15.0"
+    "branch":      "lineage-15.1"
   },
   {
     "remote":      "github",
     "repository":  "sb6596/android_proprietary_vendor_zuk",
     "target_path": "vendor/zuk",
-    "branch":      "8.1.x"
+    "branch":      "lineage-15.1"
   }
 ]
