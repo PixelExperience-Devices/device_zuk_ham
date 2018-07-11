@@ -395,8 +395,8 @@ service time_daemon /system/vendor/bin/time_daemon
     user root
     group root
 
-on property:vold.decrypt=trigger_restart_framework	
-    start config_bluetooth	
+on property:vold.decrypt=trigger_restart_framework
+    start config_bluetooth
     start wcnss-service
 
 service config_bt_addr /system/vendor/bin/btnvtool -O
@@ -405,16 +405,21 @@ service config_bt_addr /system/vendor/bin/btnvtool -O
     group bluetooth radio
     oneshot
 
-service hciattach /system/vendor/bin/hci_qcomm_init -e
+service config_bluetooth /system/vendor/bin/sh /system/vendor/bin/init.qcom.bt.sh "onboot"
+    class core
+    user root
+    group bluetooth net_bt_admin oem_2950 radio
+    oneshot
+
+service hciattach /system/vendor/bin/init.qcom.bt.sh
     class late_start
     user bluetooth
-    group bluetooth net_bt_admin oem_2950 diag radio
+    group bluetooth net_bt_admin qcom_diag radio
     disabled
     oneshot
 
 on property:bluetooth.hciattach=true
     start hciattach
-    setprop bluetooth.status on
 
 on property:bluetooth.hciattach=false
     setprop bluetooth.status off
