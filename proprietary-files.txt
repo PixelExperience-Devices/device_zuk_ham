@@ -21,9 +21,6 @@ vendor/lib/soundfx/libqcvirt.so
 bin/hci_qcomm_init:vendor/bin/hci_qcomm_init
 vendor/lib/libbtnv.so
 
-# Bluetooth aptX - from griffin - NCLS25.86-11-4-6-5
-vendor/lib/libaptX_encoder.so|b03772672144d4b750a5672c2922aded93bb0512
-
 # Camera
 bin/mm-qcamera-daemon:vendor/bin/mm-qcamera-daemon
 lib/libmmcamera_interface.so:vendor/lib/libmmcamera_interface.so
@@ -153,6 +150,14 @@ vendor/lib/libuiblur.so
 # Graphics firmware
 etc/firmware/a330_pfp.fw:vendor/firmware/a330_pfp.fw
 etc/firmware/a330_pm4.fw:vendor/firmware/a330_pm4.fw
+
+# Keymaster firmware from shinano-common
+etc/keymaster.b00:vendor/firmware/keymaster/keymaster.b00
+etc/keymaster.b01:vendor/firmware/keymaster/keymaster.b01
+etc/keymaster.b02:vendor/firmware/keymaster/keymaster.b02
+etc/keymaster.b03:vendor/firmware/keymaster/keymaster.b03
+etc/keymaster.flist:vendor/firmware/keymaster/keymaster.flist
+etc/keymaster.mdt:vendor/firmware/keymaster/keymaster.mdt
 
 # Media
 vendor/lib/libHevcSwDecoder.so
