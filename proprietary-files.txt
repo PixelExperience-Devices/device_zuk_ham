@@ -104,6 +104,11 @@ etc/firmware/cpp_firmware_v1_1_1.fw:vendor/firmware/cpp_firmware_v1_1_1.fw
 etc/firmware/cpp_firmware_v1_1_6.fw:vendor/firmware/cpp_firmware_v1_1_6.fw
 etc/firmware/cpp_firmware_v1_2_0.fw:vendor/firmware/cpp_firmware_v1_2_0.fw
 
+# CNE from Shamrock
+vendor/lib/com.quicinc.cne.api@1.0.so:vendor/lib/com.quicinc.cne.api@1.0.so
+vendor/lib/com.quicinc.cne.constants@1.0.so:vendor/lib/com.quicinc.cne.constants@1.0.so
+vendor/lib/libcneapiclient.so
+
 # DRM
 bin/qseecomd:vendor/bin/qseecomd
 lib/libdrmdecrypt.so:vendor/lib/libdrmdecrypt.so
@@ -118,6 +123,7 @@ lib/hw/fingerprint.msm8974.so
 lib/lib_fpc_tac_shared.so
 
 # GPS
+bin/loc_launcher:vendor/bin/loc_launcher
 lib/libloc_ds_api.so:vendor/lib/libloc_ds_api.so
 lib/libloc_api_v02.so:vendor/lib/libloc_api_v02.so|76f0f1224b2afc37215fb8732fc4835f72dc3cbb
 vendor/lib/hw/flp.default.so
@@ -201,7 +207,7 @@ vendor/lib/libsystem_health_mon.so
 
 # Radio
 -priv-app/qcrilmsgtunnel/qcrilmsgtunnel.apk
--app/shutdownlistener/shutdownlistener.apk
+-app/shutdownlistener/shutdownlistener.apk:vendor/app/shutdownlistener/shutdownlistener.apk
 bin/diag_mdlog:vendor/bin/diag_mdlog
 bin/netmgrd:vendor/bin/netmgrd
 bin/qmuxd:vendor/bin/qmuxd
@@ -215,7 +221,6 @@ etc/permissions/qcrilhook.xml:vendor/etc/permissions/qcrilhook.xml
 framework/qcnvitems.jar:vendor/framework/qcnvitems.jar
 framework/qcrilhook.jar:vendor/framework/qcrilhook.jar
 lib/libmdmdetect.so:vendor/lib/libmdmdetect.so
-vendor/lib/libcneapiclient.so
 vendor/lib/libconfigdb.so
 vendor/lib/liblqe.so
 vendor/lib/libnetmgr.so
@@ -255,7 +260,7 @@ vendor/lib/libthermalioctl.so
 bin/time_daemon:vendor/bin/time_daemon
 vendor/lib/libtime_genoff.so
 vendor/lib/libTimeService.so
--app/TimeService/TimeService.apk
+-app/TimeService/TimeService.apk:vendor/app/TimeService/TimeService.apk
 
 # Venus (media) firmware
 etc/firmware/venus.b00:vendor/firmware/venus.b00
@@ -266,8 +271,10 @@ etc/firmware/venus.b04:vendor/firmware/venus.b04
 etc/firmware/venus.mbn:vendor/firmware/venus.mbn
 etc/firmware/venus.mdt:vendor/firmware/venus.mdt
 
-# Widevine - from angler - OPR6.170623.017 factory image
-vendor/lib/mediadrm/libwvdrmengine.so|66ba66d047044f92eb0eada1faf6a5799ded90ab
+# Widevine - from LG v30
+vendor/bin/hw/android.hardware.drm@1.0-service.widevine:vendor/bin/hw/android.hardware.drm@1.0-service.widevine
+vendor/etc/init/android.hardware.drm@1.0-service.widevine.rc:vendor/etc/init/android.hardware.drm@1.0-service.widevine.rc
+vendor/lib/libwvhidl.so:vendor/lib/libwvhidl.so
 
 # WiFi
 -lib/libwpa_qmi_eap_proxy.so:vendor/lib/libwpa_qmi_eap_proxy.so
