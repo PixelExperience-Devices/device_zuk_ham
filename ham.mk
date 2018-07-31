@@ -140,10 +140,6 @@ PRODUCT_COPY_FILES += \
 # HIDL
 $(call inherit-product, $(LOCAL_PATH)/hidl.mk)
 
-# Lights
-PRODUCT_PACKAGES += \
-    lights.msm8974
-
 # IPC Security config
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/sec_config:system/vendor/etc/sec_config
