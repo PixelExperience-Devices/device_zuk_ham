@@ -21,6 +21,7 @@ import android.app.ActionBar;
 import android.content.Context;
 import android.os.Bundle;
 import android.provider.Settings;
+import android.support.v4.content.ContextCompat;
 import android.support.v14.preference.PreferenceFragment;
 import android.support.v7.preference.Preference;
 import android.support.v14.preference.SwitchPreference;
@@ -39,7 +40,8 @@ public class TouchscreenGesturePreferenceFragment extends PreferenceFragment {
     private static final String KEY_HAPTIC_FEEDBACK = "touchscreen_gesture_haptic_feedback";
     private static final String KEY_PROXIMITY_WAKE = "proximity_wake_enable";
 
-    private TextView mSwitchBarText;
+    private TextView mTextView;
+    private View switchBar;
 
     private Switch mAmbientDisplaySwitch;
     private SwitchPreference mHandwavePreference;
@@ -47,6 +49,9 @@ public class TouchscreenGesturePreferenceFragment extends PreferenceFragment {
     private SwitchPreference mPickupPreference;
     private SwitchPreference mPocketPreference;
     private SwitchPreference mProximityWakePreference;
+
+    private int mBackgroundActivatedColor;
+    private int mBackgroundColor;
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
@@ -70,7 +75,9 @@ public class TouchscreenGesturePreferenceFragment extends PreferenceFragment {
 
         boolean dozeEnabled = isDozeEnabled();
 
-        View switchBar = view.findViewById(R.id.switch_bar);
+        switchBar = view.findViewById(R.id.switch_bar);
+        switchBar.setBackgroundColor(dozeEnabled ? mBackgroundActivatedColor : mBackgroundColor);
+
         mAmbientDisplaySwitch = (Switch) switchBar.findViewById(android.R.id.switch_widget);
         mAmbientDisplaySwitch.setChecked(dozeEnabled);
         mAmbientDisplaySwitch.setOnCheckedChangeListener(mAmbientDisplayPrefListener);
@@ -82,14 +89,17 @@ public class TouchscreenGesturePreferenceFragment extends PreferenceFragment {
             }
         });
 
-        mSwitchBarText = switchBar.findViewById(R.id.switch_text);
-        mSwitchBarText.setText(dozeEnabled ? R.string.switch_bar_on :
+        mTextView = switchBar.findViewById(R.id.switch_text);
+        mTextView.setText(dozeEnabled ? R.string.switch_bar_on :
                 R.string.switch_bar_off);
     }
 
     @Override
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
         addPreferencesFromResource(R.xml.gesture_panel);
+
+        mBackgroundActivatedColor = ContextCompat.getColor(getActivity(), R.color.switchBarBackgroundActivatedColor);
+        mBackgroundColor = ContextCompat.getColor(getActivity(), R.color.switchBarBackgroundColor);
 
         boolean dozeEnabled = isDozeEnabled();
 
@@ -108,6 +118,7 @@ public class TouchscreenGesturePreferenceFragment extends PreferenceFragment {
 
         mHapticFeedback = (SwitchPreference) findPreference(KEY_HAPTIC_FEEDBACK);
         mHapticFeedback.setOnPreferenceChangeListener(mHapticPrefListener);
+
     }
 
     @Override
@@ -136,8 +147,9 @@ public class TouchscreenGesturePreferenceFragment extends PreferenceFragment {
                 mHandwavePreference.setEnabled(enable);
                 mPickupPreference.setEnabled(enable);
                 mPocketPreference.setEnabled(enable);
-                mSwitchBarText.setText(enable ? R.string.switch_bar_on :
+                mTextView.setText(enable ? R.string.switch_bar_on :
                         R.string.switch_bar_off);
+                switchBar.setBackgroundColor(enable ? mBackgroundActivatedColor : mBackgroundColor);
             }
         }
     };
