@@ -342,4 +342,6 @@
     <!-- Default value for led color when battery is fully charged -->
     <integer name="config_notificationsBatteryFullARGB">0xFF00FF00</integer>
 
+    <!-- IP address of the dns server to use if nobody else suggests one --> 
+    <string name="config_default_dns_server" translatable="false">1.1.1.1</string>
 </resources>
