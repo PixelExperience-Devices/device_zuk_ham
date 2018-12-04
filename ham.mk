@@ -139,7 +139,8 @@ PRODUCT_PACKAGES += \
     liboverlay
 
 PRODUCT_PROPERTY_OVERRIDES += \
-    debug.hwui.use_buffer_age=false
+    debug.hwui.use_buffer_age=false \
+    debug.hwui.renderer=opengl
 
 # GPS
 PRODUCT_PACKAGES += \
