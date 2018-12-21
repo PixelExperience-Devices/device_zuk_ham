@@ -20,6 +20,7 @@
     <SwitchPreference
         android:key="button_swap"
         android:title="@string/button_swap_title"
-        android:summary="@string/button_swap_summary" />
+        android:summary="@string/button_swap_summary"
+        android:icon="@drawable/ic_swap" />
 
 </PreferenceScreen>
