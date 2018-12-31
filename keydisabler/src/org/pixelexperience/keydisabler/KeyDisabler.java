@@ -1,6 +1,5 @@
 /*
- * Copyright (C) 2015-2016 The CyanogenMod Project
- *           (C) 2017-2018 The LineageOS Project
+ * Copyright (C) 2014 The CyanogenMod Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,9 +14,7 @@
  * limitations under the License.
  */
 
-package org.lineageos.hardware;
-
-import org.lineageos.internal.util.FileUtils;
+package org.pixelexperience.keydisabler;
 
 /*
  * Disable capacitive keys
@@ -29,17 +26,13 @@ import org.lineageos.internal.util.FileUtils;
  */
 
 public class KeyDisabler {
-
     private static String CONTROL_PATH = "/sys/devices/virtual/touch/tp_dev/key_enable";
-
     public static boolean isSupported() {
         return FileUtils.isFileWritable(CONTROL_PATH);
     }
-
     public static boolean isActive() {
         return FileUtils.readOneLine(CONTROL_PATH).equals("0");
     }
-
     public static boolean setActive(boolean state) {
         return FileUtils.writeLine(CONTROL_PATH, (state ? "0" : "1"));
     }

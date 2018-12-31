@@ -100,7 +100,7 @@ TARGET_PROCESS_SDK_VERSION_OVERRIDE += \
 BOARD_CHARGER_DISABLE_INIT_BLANK := true
 
 # Lineage Hardware
-JAVA_SOURCE_OVERLAYS := org.lineageos.hardware|$(DEVICE_PATH)/lineagehw|**/*.java
+JAVA_SOURCE_OVERLAYS := org.pixelexperience.keydisabler|$(DEVICE_PATH)/keydisabler|**/*.java
 
 # Tap to wake
 TARGET_TAP_TO_WAKE_NODE := /sys/devices/virtual/touch/tp_dev/gesture_on
