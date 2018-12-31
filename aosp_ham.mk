@@ -20,14 +20,11 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/product_launched_with_l_mr1.mk
 # Inherit from ham device
 $(call inherit-product, device/zuk/ham/ham.mk)
 
-# Inherit some common AEX stuff.
-$(call inherit-product, vendor/aosp/common.mk)
-
-# Boot animation
+# Inherit some common PixelExperience stuff.
 TARGET_BOOT_ANIMATION_RES := 1080
-
-# AospExtended-BuildType
-EXTENDED_BUILD_TYPE := OFFICIAL
+TARGET_GAPPS_ARCH := arm
+CUSTOM_BUILD_TYPE := OFFICIAL
+$(call inherit-product, vendor/aosp/config/common_full_phone.mk)
 
 PRODUCT_NAME := aosp_ham
 PRODUCT_DEVICE := ham
