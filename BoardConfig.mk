@@ -208,6 +208,9 @@ PROTOBUF_SUPPORTED := true
 # ANT+ - TODO: Confirm this - TODO: Confirm this - TODO: Confirm this - TODO: Confirm this
 BOARD_ANT_WIRELESS_DEVICE := "vfs-prerelease"
 
+# Wi-Fi Display
+TARGET_USES_AOSP_WFD := true
+
 # Extended filesystem support
 TARGET_EXFAT_DRIVER := sdfat
 
