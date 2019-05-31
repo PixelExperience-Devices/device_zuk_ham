@@ -12,15 +12,13 @@
     "branch":      "lineage-16.0"
   },
   {
-    "remote":      "github",
-    "repository":  "sb6596/lineage_kernel_cyanogen_msm8974",
+    "repository":  "kernel_cyanogen_msm8974",
     "target_path": "kernel/cyanogen/msm8974",
-    "branch":      "lineage-16.0"
+    "branch":      "pie"
   },
   {
-    "remote":      "github",
-    "repository":  "sb6596/proprietary_vendor_zuk",
+    "repository":  "vendor_zuk",
     "target_path": "vendor/zuk",
-    "branch":      "lineage-16.0"
+    "branch":      "pie"
   }
 ]
