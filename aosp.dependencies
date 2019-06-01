@@ -17,7 +17,7 @@
     "branch":      "pie"
   },
   {
-    "repository":  "vendor_zuk",
+    "repository":  "vendor_zuk_ham",
     "target_path": "vendor/zuk",
     "branch":      "pie"
   }
